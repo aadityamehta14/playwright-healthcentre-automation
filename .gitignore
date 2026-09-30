@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Test output
+.pytest_cache/
+test-results/
+playwright-report/
+blob-report/
+
+# Coverage and local environment
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
