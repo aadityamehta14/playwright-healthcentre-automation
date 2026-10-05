@@ -21,3 +21,12 @@ def test_homepage_is_responsive(page: Page, width: int, height: int):
         "() => document.documentElement.scrollWidth <= window.innerWidth"
     )
     assert no_horizontal_scroll
+
+
+def test_plan_links_remain_visible_on_mobile(page: Page):
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.goto("https://healthcentreapp.netlify.app/")
+
+    expect(page.get_by_role("link", name="Explore Free")).to_be_visible()
+    expect(page.get_by_role("link", name="Explore Standard")).to_be_visible()
+    expect(page.get_by_role("link", name="Explore Premium")).to_be_visible()
