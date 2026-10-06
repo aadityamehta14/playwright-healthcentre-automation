@@ -21,6 +21,9 @@ class HomePage(BasePage):
     def explore_premium_link(self):
         return self.page.get_by_role("link", name="Explore Premium")
 
+    def plan_links(self):
+        return self.page.locator('a[href*="/plans/"]')
+
     def click_explore_free(self):
         self.explore_free_link().click()
         return self
