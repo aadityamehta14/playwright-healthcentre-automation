@@ -1,12 +1,14 @@
+import os
+
 from playwright.sync_api import Page
 
 
 class BasePage:
     """Common browser/page helpers shared by the tests."""
 
-    def __init__(self, page: Page, base_url: str = "https://healthcentreapp.netlify.app/"):
+    def __init__(self, page: Page, base_url: str | None = None):
         self.page = page
-        self.base_url = base_url.rstrip("/")
+        self.base_url = (base_url or os.getenv("HEALTHCENTRE_BASE_URL", "https://healthcentreapp.netlify.app/")).rstrip("/")
 
     def open(self, path: str = "/"):
         url = f"{self.base_url}{path}"

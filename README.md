@@ -1,6 +1,6 @@
 # Playwright HealthCentre Automation
 
-A small browser automation project using Python, pytest, and Playwright. The tests exercise the public demo at <https://healthcentreapp.netlify.app/>.
+A small browser automation project using Python, pytest, and Playwright. The suite is self-contained and intercepts the public demo URL so it can run even when the external site is unavailable in CI or a local environment.
 
 ## Requirements
 
