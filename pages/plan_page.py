@@ -20,3 +20,6 @@ class PlanPage(BasePage):
 
     def heading(self):
         return self.page.locator("h1")
+
+    def back_home_link(self):
+        return self.page.get_by_role("link", name="Back to home")

@@ -38,6 +38,7 @@ python -m pytest -s
 |   |-- test_explore_free_plan_navigation.py
 |   |-- test_free_plan_link_details.py
 |   |-- test_homepage.py
+|   |-- test_plan_page_navigation.py
 |   |-- test_page_heading.py
 |   `-- test_subscription_plan_links.py
 |-- pages/                 # Reserved for future Page Object Model classes
