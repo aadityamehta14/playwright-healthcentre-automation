@@ -12,6 +12,9 @@ class HomePage(BasePage):
     def heading(self):
         return self.page.locator("h1")
 
+    def navigation_link(self, name: str):
+        return self.page.get_by_role("link", name=name, exact=True)
+
     def explore_free_link(self):
         return self.page.get_by_role("link", name="Explore Free")
 

@@ -5,7 +5,7 @@ A small browser automation project using Python, pytest, and Playwright. The sui
 ## Requirements
 
 - Python 3.12 (the version used in CI)
-- Internet access to reach the demo site
+- No internet access is needed to run the test suite; demo-site requests are intercepted by a local fixture.
 
 ## Setup
 
@@ -35,9 +35,11 @@ python -m pytest -s
 ```text
 .
 |-- tests/
+|   |-- conftest.py
 |   |-- test_explore_free_plan_navigation.py
 |   |-- test_free_plan_link_details.py
 |   |-- test_homepage.py
+|   |-- test_page_content_validation.py
 |   |-- test_plan_page_navigation.py
 |   |-- test_page_heading.py
 |   `-- test_subscription_plan_links.py
@@ -50,4 +52,4 @@ python -m pytest -s
 `-- README.md
 ```
 
-GitHub Actions runs the Playwright tests on pushes and pull requests. The tests depend on the external demo site being available.
+GitHub Actions runs the Playwright tests on pushes and pull requests. The tests use local mock pages, so they do not depend on the external demo site being available.
