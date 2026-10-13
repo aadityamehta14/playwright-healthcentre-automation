@@ -37,6 +37,7 @@ python -m pytest -s
 |-- tests/
 |   |-- conftest.py
 |   |-- test_explore_free_plan_navigation.py
+|   |-- test_explore_standard_plan_navigation.py
 |   |-- test_free_plan_link_details.py
 |   |-- test_homepage.py
 |   |-- test_page_content_validation.py
