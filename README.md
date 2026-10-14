@@ -30,6 +30,14 @@ To see `print()` output from tests, use:
 python -m pytest -s
 ```
 
+To run the live signup form validation checks (requires internet access):
+
+```powershell
+python -m pytest -m live_site
+```
+
+These checks validate the browser's required-field and email-format rules without submitting the form or creating an account. The currently rendered signup form has no phone-number field, so phone validation is not covered. The regular suite continues to use local mock pages.
+
 ## Project layout
 
 ```text
@@ -43,6 +51,7 @@ python -m pytest -s
 |   |-- test_page_content_validation.py
 |   |-- test_plan_page_navigation.py
 |   |-- test_page_heading.py
+|   |-- test_signup_form_validation.py
 |   `-- test_subscription_plan_links.py
 |-- pages/                 # Reserved for future Page Object Model classes
 |-- .github/workflows/

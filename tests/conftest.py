@@ -68,7 +68,11 @@ def _build_content(path: str) -> str:
 
 
 @pytest.fixture(autouse=True)
-def mock_healthcentre_site(page):
+def mock_healthcentre_site(page, request):
+    if request.node.get_closest_marker("live_site"):
+        yield
+        return
+
     def handler(route):
         request_url = route.request.url
         if not request_url.startswith(BASE_URL):
