@@ -23,3 +23,7 @@ class BasePage:
                 self.page.wait_for_timeout(2000)
 
         raise last_error
+
+    def reload(self):
+        self.page.reload(wait_until="domcontentloaded", timeout=60000)
+        return self
