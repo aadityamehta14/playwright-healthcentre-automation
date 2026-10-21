@@ -10,9 +10,9 @@ from pages.plan_page import PlanPage
     [
         ("Home", "/"),
         ("Health News", "/news"),
-        ("About Us", "/about"),
-        ("Reviews", "/reviews"),
-        ("Contact Us", "/contact"),
+        ("About Us", "/about-us"),
+        ("Reviews", "/published-reviews"),
+        ("Contact Us", "/contact-us"),
     ],
 )
 def test_homepage_navigation_links_have_expected_routes(

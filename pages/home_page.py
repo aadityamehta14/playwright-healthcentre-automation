@@ -9,9 +9,6 @@ class HomePage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
 
-    def heading(self):
-        return self.page.locator("h1")
-
     def navigation_link(self, name: str):
         return self.page.get_by_role("link", name=name, exact=True)
 

@@ -16,9 +16,9 @@ def _build_homepage() -> str:
         <nav aria-label="Main navigation">
           <a href="/">Home</a>
           <a href="/news">Health News</a>
-          <a href="/about">About Us</a>
-          <a href="/reviews">Reviews</a>
-          <a href="/contact">Contact Us</a>
+          <a href="/about-us">About Us</a>
+          <a href="/published-reviews">Reviews</a>
+          <a href="/contact-us">Contact Us</a>
         </nav>
 
         <main>
@@ -55,6 +55,22 @@ def _build_plan_page(plan_name: str) -> str:
     """
 
 
+def _build_information_page(heading: str) -> str:
+    return f"""<!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <title>{heading}</title>
+      </head>
+      <body>
+        <main>
+          <h1>{heading}</h1>
+        </main>
+      </body>
+    </html>
+    """
+
+
 def _build_content(path: str) -> str:
     normalized = urllib.parse.urlparse(path).path or "/"
     if normalized == "/":
@@ -63,6 +79,15 @@ def _build_content(path: str) -> str:
     if normalized.startswith("/plans/"):
         plan_name = normalized.rstrip("/").split("/")[-1]
         return _build_plan_page(plan_name)
+
+    information_pages = {
+        "/news": "HealthCentre News & Insights",
+        "/about-us": "Digital Health Built from Experience",
+        "/published-reviews": "What people are saying",
+        "/contact-us": "Contact Us",
+    }
+    if normalized in information_pages:
+        return _build_information_page(information_pages[normalized])
 
     return _build_homepage()
 

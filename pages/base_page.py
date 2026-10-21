@@ -1,6 +1,6 @@
 import os
 
-from playwright.sync_api import Page
+from playwright.sync_api import Locator, Page
 
 
 class BasePage:
@@ -14,7 +14,7 @@ class BasePage:
         url = f"{self.base_url}{path}"
         last_error = None
 
-        for attempt in range(3):
+        for _ in range(3):
             try:
                 self.page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 return self
@@ -27,3 +27,6 @@ class BasePage:
     def reload(self):
         self.page.reload(wait_until="domcontentloaded", timeout=60000)
         return self
+
+    def heading(self) -> Locator:
+        return self.page.get_by_role("heading", level=1)
