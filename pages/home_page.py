@@ -12,6 +12,9 @@ class HomePage(BasePage):
     def navigation_link(self, name: str):
         return self.page.get_by_role("link", name=name, exact=True)
 
+    def navigation_links(self):
+        return self.page.locator("nav a")
+
     def explore_free_link(self):
         return self.page.get_by_role("link", name="Explore Free")
 

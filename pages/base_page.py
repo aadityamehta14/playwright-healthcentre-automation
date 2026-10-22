@@ -1,6 +1,6 @@
 import os
 
-from playwright.sync_api import Locator, Page
+from playwright.sync_api import Locator, Page, expect
 
 
 class BasePage:
@@ -8,7 +8,9 @@ class BasePage:
 
     def __init__(self, page: Page, base_url: str | None = None):
         self.page = page
-        self.base_url = (base_url or os.getenv("HEALTHCENTRE_BASE_URL", "https://healthcentreapp.netlify.app/")).rstrip("/")
+        self.base_url = (
+            base_url or os.getenv("HEALTHCENTRE_BASE_URL", "https://healthcentreapp.netlify.app/")
+        ).rstrip("/")
 
     def open(self, path: str = "/"):
         url = f"{self.base_url}{path}"
@@ -30,3 +32,23 @@ class BasePage:
 
     def heading(self) -> Locator:
         return self.page.get_by_role("heading", level=1)
+
+    def assert_loaded(self, *, expected_title: str | None = None, expected_path: str | None = None):
+        if expected_title is not None:
+            expect(self.page).to_have_title(expected_title)
+
+        if expected_path is not None:
+            expect(self.page).to_have_url(f"{self.base_url}{expected_path}")
+
+        expect(self.heading()).to_be_visible()
+        return self
+
+    def link_named(self, name: str):
+        return self.page.get_by_role("link", name=name, exact=True)
+
+    def assert_link(self, name: str, href: str | None = None):
+        link = self.link_named(name)
+        expect(link).to_be_visible()
+        if href is not None:
+            expect(link).to_have_attribute("href", href)
+        return link

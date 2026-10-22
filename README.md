@@ -30,13 +30,20 @@ To see `print()` output from tests, use:
 python -m pytest -s
 ```
 
-To run the live signup form validation checks (requires internet access):
+To run the live deployed-page checks and signup form validation checks (requires internet access):
 
 ```powershell
 python -m pytest -m live_site
 ```
 
-These checks validate the browser's required-field and email-format rules without submitting the form or creating an account. The currently rendered signup form has no phone-number field, so phone validation is not covered. The regular suite continues to use local mock pages.
+The live checks verify deployed routes and homepage links, Standard and Premium plan feature access/login gates, login and signup email validation, facility-search selection and dependent location fields, and plan-page layouts at phone, tablet, and desktop widths. They do not submit credentials, create an account, start an AI chat, or save facility data. The currently rendered signup form has no phone-number field, so phone validation is not covered. The regular suite continues to use local mock pages.
+
+Set `HEALTHCENTRE_BASE_URL` when checking another deployment:
+
+```powershell
+$env:HEALTHCENTRE_BASE_URL = "https://your-deployment.example"
+python -m pytest -m live_site
+```
 
 ## Project layout
 
