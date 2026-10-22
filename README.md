@@ -45,6 +45,15 @@ $env:HEALTHCENTRE_BASE_URL = "https://your-deployment.example"
 python -m pytest -m live_site
 ```
 
+Authenticated ChildHealth interaction tests require a separate Playwright storage-state file for a dedicated test account. Do not use real patient data or commit/share the state file:
+
+```powershell
+$env:HEALTHCENTRE_STORAGE_STATE = "C:\path\to\child-health-test-account.json"
+python -m pytest tests/test_live_child_health_authenticated.py -m live_site
+```
+
+Without `HEALTHCENTRE_STORAGE_STATE`, these authenticated tests are skipped. They cover read-only navigation, timeline filters/search, required-field validation for an empty growth measurement, and cancelling the vaccine-record form without saving.
+
 ## Project layout
 
 ```text
