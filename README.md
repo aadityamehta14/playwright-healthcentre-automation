@@ -36,7 +36,7 @@ To run the live deployed-page checks and signup form validation checks (requires
 python -m pytest -m live_site
 ```
 
-The live checks verify deployed routes and homepage links, Standard and Premium plan feature access/login gates, login and signup email validation, facility-search selection and dependent location fields, and plan-page layouts at phone, tablet, and desktop widths. They do not submit credentials, create an account, start an AI chat, or save facility data. The currently rendered signup form has no phone-number field, so phone validation is not covered. The regular suite continues to use local mock pages.
+The live checks verify deployed routes and homepage links, Standard and Premium feature access/login gates (including ChildHealth), login and signup email validation, facility-search selection and dependent location fields, and plan-page layouts at phone, tablet, and desktop widths. They do not submit credentials, create an account, start an AI chat, or save facility data. ChildHealth profile-form validation requires a signed-in test account and is not part of the automated suite. The currently rendered signup form has no phone-number field, so phone validation is not covered. The regular suite continues to use local mock pages.
 
 Set `HEALTHCENTRE_BASE_URL` when checking another deployment:
 

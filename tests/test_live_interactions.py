@@ -41,6 +41,33 @@ def test_premium_ai_careassist_requires_login_before_opening(page: Page):
 
 
 @pytest.mark.live_site
+def test_premium_child_health_feature_requires_login(page: Page):
+    plan = BasePage(page).open("/plans/premium")
+    base_url = plan.base_url
+
+    child_health_card = page.locator("article").filter(
+        has=page.get_by_role("heading", name="ChildHealth", exact=True)
+    )
+    expect(child_health_card).to_be_visible()
+    child_health_card.click()
+
+    expect(page).to_have_url(f"{base_url}/login-signup?mode=login")
+    expect(page.get_by_role("heading", name="Log In", exact=True)).to_be_visible()
+    expect(page.get_by_placeholder("you@example.com")).to_be_visible()
+
+
+@pytest.mark.live_site
+@pytest.mark.parametrize("path", ["/premium/child-health", "/premium/child-health/add"])
+def test_child_health_routes_require_login(page: Page, path: str):
+    plan = BasePage(page).open(path)
+    base_url = plan.base_url
+
+    expect(page).to_have_url(f"{base_url}/login-signup?mode=login")
+    expect(page.get_by_role("heading", name="Log In", exact=True)).to_be_visible()
+    expect(page.get_by_placeholder("you@example.com")).to_be_visible()
+
+
+@pytest.mark.live_site
 def test_facility_search_requires_a_region_before_enabling_city(page: Page):
     base_url = BasePage(page).base_url
     page.goto(f"{base_url}/select-facility", wait_until="domcontentloaded", timeout=60000)
