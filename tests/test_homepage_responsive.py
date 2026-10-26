@@ -13,6 +13,16 @@ RESPONSIVE_PAGES = [
     ("/location-services", "Find Medical Facilities"),
     ("/careers", "Become a Community Digital Health Assistant (CDHA)"),
     ("/pdho", "Partner Digital Health Organisation (PDHO)"),
+    ("/national-edition", "HealthCentreApp National Edition"),
+    ("/voucher-info", "Gift a HealthCentreApp Subscription"),
+    ("/advert-info", "Advertise on HealthCentreApp"),
+    ("/refer-a-friend", "Share HealthCentreApp"),
+    ("/reviews/published", "What people are saying"),
+    ("/ai-help", "AI Assistant"),
+    ("/terms", "Terms of Use"),
+    ("/privacy", "Privacy Policy"),
+    ("/cookies", "Cookie Policy"),
+    ("/ai-policy", "AI Policy"),
 ]
 
 VIEWPORTS = [
